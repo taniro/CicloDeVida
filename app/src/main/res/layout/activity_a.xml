@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="br.ufrn.eaj.tads.ciclovida.ActivityA">
+    tools:context="br.ufrn.eaj.tads.ciclodevida.ActivityA">
 
     <TextView
         android:layout_width="match_parent"
@@ -42,6 +42,14 @@
         android:layout_height="wrap_content"
         android:text="Abrir Activity C"
         android:onClick="click2"/>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="click3"
+        android:text="Abrir Activity C 2" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

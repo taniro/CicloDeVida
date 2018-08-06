@@ -15,7 +15,7 @@ public class ActivityB extends AppCompatActivity {
         Bundle params = getIntent().getExtras();
         String nome = params.getString("nome");
 
-        TextView tv = (TextView) findViewById(R.id.recebe);
+        TextView tv = findViewById(R.id.recebe);
         tv.setText(nome);
     }
 

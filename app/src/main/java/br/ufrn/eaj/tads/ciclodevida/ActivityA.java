@@ -72,7 +72,7 @@ public class ActivityA extends AppCompatActivity {
         Intent intent = new Intent(this,ActivityB.class);
         Bundle params = new Bundle();
 
-        EditText texto = (EditText) findViewById(R.id.texto);
+        EditText texto = findViewById(R.id.texto);
 
         params.putString("nome", texto.getText().toString());
         intent.putExtras(params);
@@ -85,33 +85,54 @@ public class ActivityA extends AppCompatActivity {
         Intent intent = new Intent(this,ActivityC.class);
         Bundle params = new Bundle();
 
-        EditText numero = (EditText) findViewById(R.id.numero);
+        EditText numero = findViewById(R.id.numero);
 
         params.putInt("numero", Integer.valueOf(numero.getText().toString()) );
         intent.putExtras(params);
 
-        startActivityForResult(intent, MULTIPL);
+        startActivityForResult(intent, 77);
+    }
+
+    public void click3(View v){
+
+        Intent i = new Intent(this, ActivityC.class);
+
+        EditText numero = findViewById(R.id.numero);
+
+        i.putExtra("numero", Integer.valueOf(numero.getText().toString()) );
+
+        startActivityForResult(i, 444);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == MULTIPL) {
+
+        if (requestCode == 77) {
             //De qual opção veio o resultado?
             if(resultCode == RESULT_X2) {
-                TextView tv = (TextView) findViewById(R.id.tiporesultado);
+                TextView tv = findViewById(R.id.tiporesultado);
                 tv.setText("Foi multiplicado por 2.");
 
             }else if(resultCode == RESULT_X5){
-                TextView tv = (TextView) findViewById(R.id.tiporesultado);
+                TextView tv = findViewById(R.id.tiporesultado);
                 tv.setText("Foi multiplicado por 5.");
+            }else if (resultCode == RESULT_CANCELED){
+                TextView tv = findViewById(R.id.tiporesultado);
+                tv.setText("Acao cancelada");
             }
 
 
-            TextView tv2 = (TextView) findViewById(R.id.resultado);
+            TextView tv2 = findViewById(R.id.resultado);
 
-            Bundle dados = data.getExtras();
-            int resultado = dados.getInt("resultado");
-            tv2.setText(""+resultado);
+
+            if (data != null){
+                Bundle dados = data.getExtras();
+                int resultado = dados.getInt("resultado");
+                tv2.setText("" + resultado);
+            }
+        }else if(requestCode == 444){
+            TextView tv = findViewById(R.id.tiporesultado);
+            tv.setText("Clicou no novo botao.");
         }
 
     }

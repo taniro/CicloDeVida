@@ -18,11 +18,15 @@ public class ActivityC extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_c);
 
+
+
         Bundle params = getIntent().getExtras();
         numero = params.getInt("numero");
 
-        TextView tv = (TextView) findViewById(R.id.numeroc);
+        TextView tv = findViewById(R.id.numeroc);
         tv.setText(numero.toString());
+
+
     }
 
     public void multi2(View v){
@@ -42,10 +46,12 @@ public class ActivityC extends AppCompatActivity {
 
         Intent intent= new Intent();
 
+
         Bundle data = new Bundle();
         data.putInt("resultado", numero * 5);
 
         intent.putExtras(data);
+
 
         setResult(RESULT_X5,intent);
         finish();
